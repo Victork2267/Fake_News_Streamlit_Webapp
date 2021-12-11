@@ -42,8 +42,6 @@ import re
 import joblib
 
 from sklearn.model_selection import train_test_split
-from keras_fake_news_detector.library.utility.plot_utils import plot_confusion_matrix
-from keras_fake_news_detector.library.classifiers.recurrent_networks import LstmClassifier
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -51,24 +49,7 @@ import plotly.graph_objects as go
 deep_trad_model_select = st.sidebar.radio("Use deep learning models or traditional machine learning models for fake news prediction",["Deep learning models","Traditional machine learning models"])
 
 if deep_trad_model_select == "Deep learning models":
-    st.header("Fake News Classification app using Deep learning models")
-    model_dir_path = './models'
-    config_file_path = model_dir_path + '/' + LstmClassifier.model_name + '-config.npy'
-    weight_file_path = model_dir_path + '/' + LstmClassifier.model_name + '-weights.h5'
-
-    config = np.load(config_file_path, allow_pickle=True).item()
-
-    classifier = LstmClassifier(config)
-    classifier.load_weights(weight_file_path)
-    st.info("LSTM model and model weights has been loaded from {}".format(weight_file_path))
-
-    user_input = st.text_area("Enter your news content here", "Some news",height=200)
-    if st.button("predict"):
-        prediction = classifier.predict(user_input)
-        if prediction == 1:
-            st.success('This is not a fake news')
-        if prediction == 0:
-            st.warning('This is a fake news')
+    st.header("Fake News Classification app using Deep learning models - Not Ready")
 
 elif deep_trad_model_select == "Traditional machine learning models":
     st.header("Fake News Classification app using traditional machine-learning models")
