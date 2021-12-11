@@ -55,7 +55,7 @@ elif deep_trad_model_select == "Traditional machine learning models":
     st.header("Fake News Classification app using traditional machine-learning models")
     prediction_option = st.selectbox("Utilise either 1 model or compare between all models", ["Use 1 model for prediction", "Compare results of all models"])
     if prediction_option == "Use 1 model for prediction":
-        model_list = ["Logistic Regression",'Multinomial Naive Bayes Classifier','Bernoulli Naive Bayes Classifier','Gradient Boost Classifier','Decision Tree','RFC Classifier']
+        model_list = ["Logistic Regression",'Multinomial Naive Bayes Classifier','Gradient Boost Classifier','Decision Tree']
         model_option = st.selectbox("Select the model to use:",model_list)
 
         if model_option == "Logistic Regression":
@@ -66,20 +66,12 @@ elif deep_trad_model_select == "Traditional machine learning models":
             filename = r'models/MNVBC_model.pkl'
             model = pickle.load(open(filename, "rb"))
             st.info("Model {} has been loaded".format(model_option))
-        elif model_option == "Bernoulli Naive Bayes Classifier":
-            filename = r'models/BNBC_model.pkl'
-            model = pickle.load(open(filename, "rb"))
-            st.info("Model {} has been loaded".format(model_option))
         elif model_option == "Gradient Boost Classifier":
             filename = r'models/GBC_model.pkl'
             model = pickle.load(open(filename, "rb"))
             st.info("Model {} has been loaded".format(model_option))
         elif model_option == "Decision Tree":
             filename = r'models/DT_model.pkl'
-            model = pickle.load(open(filename, "rb"))
-            st.info("Model {} has been loaded".format(model_option))
-        elif model_option == "RFC Classifier":
-            filename = r'models/RFC_model.pkl'
             model = pickle.load(open(filename, "rb"))
             st.info("Model {} has been loaded".format(model_option))
 
@@ -110,8 +102,8 @@ elif deep_trad_model_select == "Traditional machine learning models":
                 st.warning('This is a fake news')
 
     elif prediction_option == "Compare results of all models":
-        model_list = ["Logistic Regression",'Multinomial Naive Bayes Classifier','Bernoulli Naive Bayes Classifier','Gradient Boost Classifier','Decision Tree','RFC Classifier']
-        model_file_list = [r"models/LR_model.pkl",r"models/MNVBC_model.pkl",r"models/BNBC_model.pkl",r"models/GBC_model.pkl",r"models/DT_model.pkl",r"models/RFC_model.pkl"]
+        model_list = ["Logistic Regression",'Multinomial Naive Bayes Classifier','Gradient Boost Classifier','Decision Tree']
+        model_file_list = [r"models/LR_model.pkl",r"models/MNVBC_model.pkl",r"models/GBC_model.pkl",r"models/DT_model.pkl"]
         st.subheader("Input the News content below")
         predictions = []
         user_input = st.text_area("Enter your news content here", "Some news",height=200)
